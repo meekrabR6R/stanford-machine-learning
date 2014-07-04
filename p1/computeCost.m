@@ -14,13 +14,11 @@ function J = computeCost(X, y, theta)
 	%               You should set J to the cost.
 
 	sum = 0;
-	
 	for iter = 1:m
 		sum += ((theta(1) + (theta(2) * X(iter,2))) - y(iter))^2;
 	end
-
 	J = (1/(2*m))*sum;
-	%fprintf("%f \n",J);
+
 	% =========================================================================
 
 end
