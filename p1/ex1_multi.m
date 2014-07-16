@@ -35,7 +35,7 @@ fprintf('Loading data ...\n');
 
 %% Load Data
 data = load('ex1data2.txt');
-X = data(:, 1:2);
+X = data(:, 1:2)
 y = data(:, 3);
 m = length(y);
 
@@ -104,7 +104,7 @@ fprintf('\n');
 % ====================== YOUR CODE HERE ======================
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
-price = 0; % You should change this
+price = X*theta; % You should change this
 
 
 % ============================================================
