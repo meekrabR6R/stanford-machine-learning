@@ -64,7 +64,7 @@ X = [ones(m, 1) X];
 initial_theta = zeros(n + 1, 1);
 
 % Compute and display initial cost and gradient
-[cost, grad] = costFunction(initial_theta, X, y);
+[cost, grad] = costFunction(initial_theta, X, y)
 
 fprintf('Cost at initial theta (zeros): %f\n', cost);
 fprintf('Gradient at initial theta (zeros): \n');
