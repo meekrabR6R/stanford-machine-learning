@@ -78,7 +78,21 @@ function [J grad] = nnCostFunction(nn_params, ...
 		end
 	end
 
-	J = (1 / m) * sum;
+	sum1 = 0;
+	for i = 1:size(Theta1,1)
+		for j = 2:size(Theta1,2)
+			sum1 += Theta1(i,j)^2;
+		end
+	end
+
+	sum2 = 0;
+	for i = 1:size(Theta2,1)
+		for j = 2:size(Theta2,2)
+			sum2 += Theta2(i,j)^2;
+		end
+	end
+	reg = (lambda / (2*m)) * (sum1 + sum2);
+	J = ((1 / m) * sum) + reg;
 	% =========================================================================
 
 	% Unroll gradients
