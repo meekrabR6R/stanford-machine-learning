@@ -78,23 +78,35 @@ function [J grad] = nnCostFunction(nn_params, ...
 		end
 	end
 
-	sum1 = 0;
-	for i = 1:size(Theta1,1)
-		for j = 2:size(Theta1,2)
-			sum1 += Theta1(i,j)^2;
-		end
-	end
+	sum1 = neuralRegSum(Theta1);
+	
+	%for i = 1:size(Theta1,1)
+	%	for j = 2:size(Theta1,2)
+	%		sum1 += Theta1(i,j)^2;
+	%	end
+	%end
 
-	sum2 = 0;
-	for i = 1:size(Theta2,1)
-		for j = 2:size(Theta2,2)
-			sum2 += Theta2(i,j)^2;
-		end
-	end
+	sum2 = neuralRegSum(Theta2);
+	
+	%for i = 1:size(Theta2,1)
+	%	for j = 2:size(Theta2,2)
+	%		sum2 += Theta2(i,j)^2;
+	%	end
+	%end
+	
 	reg = (lambda / (2*m)) * (sum1 + sum2);
 	J = ((1 / m) * sum) + reg;
 	% =========================================================================
 
 	% Unroll gradients
 	grad = [Theta1_grad(:) ; Theta2_grad(:)];	
+end
+
+function [summ] = neuralRegSum(Theta)
+	summ = 0;
+	for i = 1:size(Theta,1)
+		for j = 2:size(Theta,2)
+			summ += Theta(i,j)^2;
+		end
+	end
 end
