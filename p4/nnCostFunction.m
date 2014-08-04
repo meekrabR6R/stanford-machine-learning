@@ -73,6 +73,16 @@ function [J grad] = nnCostFunction(nn_params, ...
 
 	reg = (lambda / (2*m)) * (neuralRegSum(Theta1) + neuralRegSum(Theta2));
 	J = sum(sum((1 / m)*((-yMatrix.*log(a3))-(1-yMatrix).*log(1-a3)))) + reg;
+
+	% backprop
+	d3 = a3 - yMatrix;
+	d2 = (d3*Theta2(:,2:end)).*sigmoidGradient(z2);
+
+	Theta1_grad = (1/m)*(d2'*a1);
+	Theta1_grad(:,2:end) = Theta1_grad(:,2:end) + (lambda / m)*Theta1(:,2:end);
+	Theta2_grad = (1/m)*(d3'*a2);
+	Theta2_grad(:,2:end) = Theta2_grad(:,2:end) + (lambda / m)*Theta2(:,2:end);
+
 	% =========================================================================
 
 	% Unroll gradients
