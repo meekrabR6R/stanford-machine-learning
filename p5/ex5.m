@@ -200,7 +200,6 @@ pause;
 %  lambda on a validation set. You will then use this to select the
 %  "best" lambda value.
 %
-
 [lambda_vec, error_train, error_val] = ...
     validationCurve(X_poly, y, X_poly_val, yval);
 
