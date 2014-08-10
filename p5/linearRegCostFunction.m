@@ -18,13 +18,13 @@ function [J, grad] = linearRegCostFunction(X, y, theta, lambda)
 	%
 	%               You should set J to the cost and grad to the gradient.
 	%
-	twoM = 2*m;
-	hMinusY = (X*theta) - y;
-	subTheta = theta(2:end,:);
-	J = (1/twoM)*(hMinusY'*hMinusY) + ((lambda/twoM)*sum(subTheta.*subTheta));
+	two_m = 2*m;
+	h_minus_y = (X*theta) - y;
+	sub_theta = theta(2:end,:);
+	J = (1/two_m)*(h_minus_y'*h_minus_y) + ((lambda/two_m)*sum(sub_theta.*sub_theta));
 
-	grad = (1/m) * (hMinusY'*X);
-	grad(:,2:end) += (lambda/m)*subTheta';
+	grad = (1/m) * (h_minus_y'*X);
+	grad(:,2:end) += (lambda/m)*sub_theta';
 	% =========================================================================
 
 	grad = grad(:);
