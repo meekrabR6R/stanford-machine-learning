@@ -20,8 +20,11 @@ function [J, grad] = linearRegCostFunction(X, y, theta, lambda)
 	%
 	twoM = 2*m;
 	hMinusY = (X*theta) - y;
-	subTheta = theta(2:end,:)
+	subTheta = theta(2:end,:);
 	J = (1/twoM)*(hMinusY'*hMinusY) + ((lambda/twoM)*sum(subTheta.*subTheta));
+
+	grad = (1/m) * (hMinusY'*X);
+	grad(:,2:end) += (lambda/m)*subTheta';
 	% =========================================================================
 
 	grad = grad(:);
