@@ -24,6 +24,8 @@ function [mu sigma2] = estimateGaussian(X)
 
 	for i = 1:n
 		sigma2(i) = var(X(:,i),1);%(sum((X(:,i) - mu(i).^2))/m);
+		%sigma2(i) = (sum((X(:,i) - mu(i)).^2))/m <- same diffy
 	end
+
 	% =============================================================
 end
