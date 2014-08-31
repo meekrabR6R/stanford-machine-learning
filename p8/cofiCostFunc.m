@@ -39,7 +39,10 @@ function [J, grad] = cofiCostFunc(params, Y, R, num_users, num_movies, ...
 	%        Theta_grad - num_users x num_features matrix, containing the 
 	%                     partial derivatives w.r.t. to each element of Theta
 	%
-	J = sum(sum((((Theta*X')' .* R) - Y).^2) * .5);
+	dif = R .* ((Theta*X')' - Y);
+	J = (sum(sum(dif.^2)) + (lambda * (sum(sum(Theta .^2)) + sum(sum(X .^2)))))/ 2;
+	X_grad = dif * Theta;
+	Theta_grad = dif' * X;
 	% =============================================================
 
 	grad = [X_grad(:); Theta_grad(:)];
