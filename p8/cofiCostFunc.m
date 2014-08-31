@@ -41,8 +41,8 @@ function [J, grad] = cofiCostFunc(params, Y, R, num_users, num_movies, ...
 	%
 	dif = R .* ((Theta*X')' - Y);
 	J = (sum(sum(dif.^2)) + (lambda * (sum(sum(Theta .^2)) + sum(sum(X .^2)))))/ 2;
-	X_grad = dif * Theta;
-	Theta_grad = dif' * X;
+	X_grad = dif * Theta + lambda*X;
+	Theta_grad = dif' * X + lambda*Theta;
 	% =============================================================
 
 	grad = [X_grad(:); Theta_grad(:)];
